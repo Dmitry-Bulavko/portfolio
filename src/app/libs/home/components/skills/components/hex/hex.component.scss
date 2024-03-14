@@ -1,0 +1,26 @@
+@import "variables";
+
+.hex {
+    color: $text-color;
+    transition: .3s;
+    &-border {
+        stroke: $primary-color;
+        stroke-opacity: 0;
+        transition: .3s;
+    }
+    &:hover {
+        .hex-border {
+            stroke-opacity: 1;
+        }
+        .hex-shadow {
+            fill-opacity: .1;
+        }
+        color: $primary-color;
+
+        linearGradient {
+            stop:nth-child(2) {
+                stop-color: $primary-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@import "variables";
+
+.about-me {
+    padding: 10 * $grid-unit;
+
+    &__title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 46px;
+        letter-spacing: 0.05em;
+        text-align: center;
+    }
+
+    &__description {
+        text-align: center;
+        font-size: 20px;
+    }
+}

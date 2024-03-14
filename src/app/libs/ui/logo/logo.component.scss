@@ -1,0 +1,12 @@
+@import "variables";
+.logo {
+    display: flex;
+    gap: 2 * $grid-unit;
+    align-items: center;
+    &__text {
+        text-transform: uppercase;
+        font-size: 20px;
+        flex-shrink: 0;
+        color: $text-color;
+    }
+}

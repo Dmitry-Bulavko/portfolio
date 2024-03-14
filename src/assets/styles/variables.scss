@@ -1,0 +1,76 @@
+@function hex-to-rgb($hex) {
+    $red: red($hex);
+    $green: green($hex);
+    $blue: blue($hex);
+    @return $red, $green, $blue;
+}
+
+@mixin dark-theme {
+    color-scheme: dark;
+    --background-color: #24222F;
+    --background-color-rgb: #{hex-to-rgb(#24222F)};
+    --background-color-light: #1E2D4D;
+    --background-color-light-rgb: #{hex-to-rgb(#1E2D4D)};
+    --text-color: #E8FBFF;
+    --text-color-rgb: #{hex-to-rgb(#E8FBFF)};
+    --primary-color: #0EFF85;
+    --primary-color-rgb: #{hex-to-rgb(#0EFF85)};
+    --primary-color-light: #0EFF85;
+    --primary-color-light-rgb: #{hex-to-rgb(#0EFF85)};
+    --primary-color-lightest: #0EFF85;
+    --primary-color-lightest-rgb: #{hex-to-rgb(#0EFF85)};
+    --primary-color-dark: #0EFF85;
+    --primary-color-dark-rgb: #{hex-to-rgb(#0EFF85)};
+    --primary-color-darkest: #0EFF85;
+    --primary-color-darkest-rgb: #{hex-to-rgb(#0EFF85)};
+}
+
+@mixin light-theme {
+    color-scheme: light;
+    --background-color: #FEFEFE;
+    --background-color-light: #FFFFFF;
+    --text-color: #000000;
+    --primary-color: green;
+    --primary-color-light: #0EFF85;
+    --primary-color-lightest: #0EFF85;
+    --primary-color-dark: #0EFF85;
+    --primary-color-darkest: #0EFF85;
+}
+
+:root {
+    @media (prefers-color-scheme: dark) {
+        @include dark-theme;
+    }
+
+    @media (prefers-color-scheme: light) {
+        @include light-theme;
+    }
+}
+
+.light-theme {
+    @include light-theme;
+}
+.dark-theme {
+    @include dark-theme;
+}
+
+// colors
+$background-color: var(--background-color);
+$background-color-rgb: var(--background-color-rgb);
+$background-color-light: var(--background-color-light);
+$background-color-light-rgb: var(--background-color-light-rgb);
+$text-color: var(--text-color);
+$text-color-rgb: var(--text-color-rgb);
+$primary-color: var(--primary-color);
+$primary-color-rgb: var(--primary-color-rgb);
+$primary-color-light: var(--primary-color-light);
+$primary-color-light-rgb: var(--primary-color-light-rgb);
+$primary-color-lightest: var(--primary-color-lightest);
+$primary-color-lightest-rgb: var(--primary-color-lightest-rgb);
+$primary-color-dark: var(--primary-color-dark);
+$primary-color-dark-rgb: var(--primary-color-dark-rgb);
+$primary-color-darkest: var(--primary-color-darkest);
+$primary-color-darkest-rgb: var(--primary-color-darkest-rgb);
+
+// units
+$grid-unit: 8px;

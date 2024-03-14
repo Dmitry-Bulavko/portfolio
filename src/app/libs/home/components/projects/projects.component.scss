@@ -1,0 +1,48 @@
+@import "variables";
+.projects {
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 8 * $grid-unit;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__item {
+    }
+
+    .project {
+        display: flex;
+        padding: 3 * $grid-unit;
+        flex-direction: column;
+        gap: 5 * $grid-unit;
+        border: 1px solid #E8FBFF0D;
+        background: rgba($text-color-rgb, 0.01);
+        border-radius: 2 * $grid-unit;
+        transition: box-shadow ease-in-out .3s;
+        text-decoration: none;
+
+        &:hover {
+            box-shadow: 0 0 $grid-unit 0 rgba($background-color-rgb, 0.5), inset 0px -10px 20px -10px rgba($primary-color-rgb, 0.5);
+            transition: box-shadow ease-in-out .3s;
+            border-color: rgba($primary-color-rgb, 0.5);
+        }
+
+        &__icon {
+            display: flex;
+            width: 15 * $grid-unit;
+            height: 15 * $grid-unit;
+        }
+
+        &__title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            letter-spacing: 0.05em;
+            text-align: center;
+            color: $text-color;
+            text-decoration: none;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@import "variables";
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid rgba(232, 251, 255, 0.05);
+    background: linear-gradient(0deg, transparent, rgba(232, 251, 255, 0.05));
+    border-radius: 6px;
+    &__name {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 23px;
+        letter-spacing: 0.05em;
+        text-align: left;
+        color: $text-color;
+    }
+    &__level {
+        display: flex;
+        gap: 10px;
+        &-item {
+            width: 100%;
+            flex-shrink: 1;
+            flex-grow: 1;
+            height: 4px;
+            background-color: rgba(232, 251, 255, 0.4);
+            &--highlighted {
+                background-color: $primary-color;
+                &:hover {
+                    box-shadow: 0 0 $grid-unit 0 $primary-color;
+                }
+            }
+            &:hover {
+                box-shadow: 0 0 $grid-unit 0 rgba(232, 251, 255, 0.4);
+            }
+        }
+    }
+}

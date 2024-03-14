@@ -1,0 +1,24 @@
+<section class="experience">
+    <h2 class="experience__title">Experience</h2>
+    <div class="experience__list">
+        <ng-container *ngFor="let item of experience">
+            <div class="experience__item item">
+                <div class="item__header">
+                    <div class="item__header-title">
+                        <div class="item__header-title-company">{{item.company}}</div>
+                        <div class="item__header-title-role">{{item.role}}</div>
+                    </div>
+                    <div class="item__header-period">{{item.from}} - {{item.to}}</div>
+                </div>
+                <div class="item__body">{{item.description}}</div>
+                <div class="item__footer">
+                    <div class="item__skills">
+                        <div *ngFor="let skill of item.skills" class="item__skill">
+                            {{skill}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>

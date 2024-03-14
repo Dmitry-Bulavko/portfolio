@@ -1,0 +1,105 @@
+service: aws-portfolio-site
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-central-1
+
+plugins:
+  - serverless-finch
+  - serverless-single-page-app-plugin
+
+custom:
+  client:
+    bucketName: aws-portfolio-site
+    distributionFolder: dist/portfolio/browser/
+  s3LocalPath: ${self:custom.client.distributionFolder}/
+  s3BucketName: ${self:custom.client.bucketName}
+
+resources:
+  Resources:
+    WebAppS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.s3BucketName}
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: false
+        OwnershipControls:
+          Rules:
+            - ObjectOwnership: ObjectWriter
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+
+    WebAppS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: WebAppS3Bucket
+        PolicyDocument:
+          Statement:
+            - Sid: "AllowCloudFrontAccessIdentity"
+              Effect: Allow
+              Action: s3:GetObject
+              Resource: arn:aws:s3:::${self:custom.s3BucketName}/*
+              Principal:
+                AWS:
+                  Fn::Join:
+                    - " "
+                    - - "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity"
+                      - !Ref OriginAccessIdentity
+
+    OriginAccessIdentity:
+      Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+      Properties:
+        CloudFrontOriginAccessIdentityConfig:
+          Comment: Access identity between CloudFron and S3 bucket
+
+    WebAppCloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Origins:
+            - DomainName: !GetAtt WebAppS3Bucket.RegionalDomainName
+              Id: myS3Origin
+              S3OriginConfig:
+                OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${OriginAccessIdentity}
+          Enabled: true
+          IPV6Enabled: true
+          HttpVersion: http2
+          DefaultRootObject: index.html
+          CustomErrorResponses:
+            - ErrorCode: 404
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+          DefaultCacheBehavior:
+            AllowedMethods: ["GET", "HEAD", "OPTIONS"]
+            CachedMethods: ["GET", "HEAD", "OPTIONS"]
+            ForwardedValues:
+              Headers:
+                - Access-Control-Request-Headers
+                - Access-Control-Request-Method
+                - Origin
+                - Authorization
+              QueryString: false
+              Cookies:
+                Forward: none
+            TargetOriginId: myS3Origin
+            ViewerProtocolPolicy: redirect-to-https
+            Compress: true
+            DefaultTTL: 0
+          ViewerCertificate:
+            AcmCertificateArn: arn:aws:acm:us-east-1:175525132119:certificate/5e2bd1d9-99bc-4fdc-a728-a8137ffdabaf
+            MinimumProtocolVersion: TLSv1.2_2021
+            SslSupportMethod: sni-only
+          Aliases:
+              - www.dzmitry-bulauka.com
+
+  Outputs:
+    WebAppS3BucketOutput:
+      Value: !Ref WebAppS3Bucket
+    WebAppCloudFrontDistribution:
+      Value: !GetAtt WebAppCloudFrontDistribution.DomainName
+

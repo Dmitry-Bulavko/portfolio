@@ -1,0 +1,17 @@
+<section class="skills">
+    <div class="skills__title">Skills</div>
+    <div class="skills__core">
+        <div class="skills__item-title">
+            <app-core-skills/>
+        </div>
+    </div>
+    <div class="skills__list">
+        <div class="skills__item" *ngFor="let topic of skills">
+            <div class="skills__item-title">{{topic.topic}}</div>
+            <div class="skills__item-list">
+                <app-skill *ngFor="let skill of topic.skills" [skill]="skill"/>
+            </div>
+        </div>
+    </div>
+</section>
+

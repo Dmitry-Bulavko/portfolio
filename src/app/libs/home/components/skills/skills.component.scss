@@ -1,0 +1,38 @@
+@import "variables";
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 5 * $grid-unit;
+    &__title {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 46px;
+        letter-spacing: 0.05em;
+        text-align: center;
+        color: $text-color;
+    }
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5 * $grid-unit;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 3 * $grid-unit;
+        &-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3 * $grid-unit;
+        }
+        &-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 46px;
+            letter-spacing: 0.05em;
+            text-align: center;
+            color: $text-color;
+        }
+    }
+}

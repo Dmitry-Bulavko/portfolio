@@ -1,0 +1,10 @@
+<section class="projects">
+    <ul class="projects__list">
+        <li *ngFor="let project of projects" class="projects__item">
+            <a [routerLink]="project.url" class="project">
+                <div class="project__icon">{{project.icon}}</div>
+                <div class="project__title">{{project.title}}</div>
+            </a>
+        </li>
+    </ul>
+</section>
