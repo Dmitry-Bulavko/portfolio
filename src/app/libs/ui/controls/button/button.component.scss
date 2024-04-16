@@ -1,0 +1,33 @@
+@import "variables";
+
+.button {
+    background-color: $primary-color-darkest;
+    color: $text-color;
+    display: flex;
+    gap: $grid-unit;
+    align-items: center;
+    border: none;
+    border-radius: $grid-unit;
+    padding: $grid-unit 2 * $grid-unit;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-color-dark;
+    }
+
+    &:active {
+        animation: blink;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
+        @keyframes blink {
+            from {
+                background-color: $primary-color-lightest;
+            }
+            to {
+                background-color: $primary-color-darkest;
+            }
+
+        }
+    }
+}

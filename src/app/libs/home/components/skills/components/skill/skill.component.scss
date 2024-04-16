@@ -15,6 +15,14 @@
         letter-spacing: 0.05em;
         text-align: left;
         color: $text-color;
+        display: flex;
+        gap: $grid-unit;
+        align-items: center;
+    }
+    &__icon {
+        display: inline-flex;
+        width: $grid-unit * 2;
+        height: $grid-unit * 2;
     }
     &__level {
         display: flex;

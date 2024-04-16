@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconsSpriteComponent } from './icons-sprite.component';
+import { DashboardComponent } from './dashboard.component';
 
-describe('IconsSpriteComponent', () => {
-  let component: IconsSpriteComponent;
-  let fixture: ComponentFixture<IconsSpriteComponent>;
+describe('DashboardComponent', () => {
+  let component: DashboardComponent;
+  let fixture: ComponentFixture<DashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IconsSpriteComponent]
+      imports: [DashboardComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(IconsSpriteComponent);
+    fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

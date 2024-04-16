@@ -3,7 +3,7 @@ import { LogoComponent } from "../logo/logo.component";
 import { RouterLink } from "@angular/router";
 import { NavigationComponent } from "../navigation/navigation.component";
 import { IconComponent } from "../icon/icon.component";
-import { Icons } from "../icons-sprite/icons-sprite.component";
+import { Icons } from "../icon/icons.enum";
 
 @Component({
   selector: 'app-header',

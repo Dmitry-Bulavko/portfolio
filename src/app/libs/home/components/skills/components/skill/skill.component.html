@@ -1,5 +1,7 @@
 <div class="skill">
-    <div class="skill__name">{{ skill.name }}</div>
+    <div class="skill__name">
+        <app-icon *ngIf="skill.icon" class="skill__icon" [icon]="skill.icon"/>
+        {{ skill.name }}</div>
     <div class="skill__level">
         <div *ngFor="let level of levels"
              class="skill__level-item"

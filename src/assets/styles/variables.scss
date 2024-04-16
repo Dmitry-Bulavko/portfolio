@@ -1,28 +1,22 @@
-@function hex-to-rgb($hex) {
-    $red: red($hex);
-    $green: green($hex);
-    $blue: blue($hex);
-    @return $red, $green, $blue;
-}
-
 @mixin dark-theme {
     color-scheme: dark;
-    --background-color: #24222F;
-    --background-color-rgb: #{hex-to-rgb(#24222F)};
-    --background-color-light: #1E2D4D;
-    --background-color-light-rgb: #{hex-to-rgb(#1E2D4D)};
-    --text-color: #E8FBFF;
-    --text-color-rgb: #{hex-to-rgb(#E8FBFF)};
-    --primary-color: #0EFF85;
-    --primary-color-rgb: #{hex-to-rgb(#0EFF85)};
-    --primary-color-light: #0EFF85;
-    --primary-color-light-rgb: #{hex-to-rgb(#0EFF85)};
-    --primary-color-lightest: #0EFF85;
-    --primary-color-lightest-rgb: #{hex-to-rgb(#0EFF85)};
-    --primary-color-dark: #0EFF85;
-    --primary-color-dark-rgb: #{hex-to-rgb(#0EFF85)};
-    --primary-color-darkest: #0EFF85;
-    --primary-color-darkest-rgb: #{hex-to-rgb(#0EFF85)};
+    --background-color: rgb(var(--background-color-rgb));
+    --background-color-rgb: 36, 34, 47;
+    --background-color-light: rgb(var(--background-color-light-rgb));
+    --background-color-light-rgb: 30, 45, 77;
+    --text-color: rgb(var(--text-color-rgb));
+    --text-color-rgb: 232, 251, 255;
+
+    --primary-color: rgb(var(--primary-color-rgb));
+    --primary-color-rgb: 14, 255, 133;
+    --primary-color-light: rgb(var(--primary-color-light-rgb));
+    --primary-color-light-rgb: 166, 255, 185;
+    --primary-color-lightest: rgb(var(--primary-color-lightest-rgb));
+    --primary-color-lightest-rgb: 116, 255, 185;
+    --primary-color-dark: rgb(var(--primary-color-dark-rgb));
+    --primary-color-dark-rgb: 0, 218, 108;
+    --primary-color-darkest: rgb(var(--primary-color-darkest-rgb));
+    --primary-color-darkest-rgb: 0, 167, 82;
 }
 
 @mixin light-theme {
@@ -50,6 +44,7 @@
 .light-theme {
     @include light-theme;
 }
+
 .dark-theme {
     @include dark-theme;
 }

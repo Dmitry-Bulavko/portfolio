@@ -1,0 +1,40 @@
+@import "variables";
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: calc(100dvh - 100px);
+    gap: $grid-unit * 2;
+
+    &__aside {
+        background-color: rgba($text-color-rgb, .05);
+        padding: 8px 8px 8px 0;
+        border-top-right-radius: 16px;
+    }
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: $grid-unit * 2;
+
+        &-title {
+            background-color: rgba($text-color-rgb, .05);
+            height: $grid-unit * 8;
+            display: flex;
+            margin: 0;
+            align-items: center;
+            padding-left: $grid-unit * 2;
+            border-top-left-radius: $grid-unit * 2;
+            border-bottom-left-radius: $grid-unit * 2;
+        }
+        &-content {
+            background-color: rgba($text-color-rgb, .05);
+            height: $grid-unit * 8;
+            display: flex;
+            margin: 0;
+            align-items: flex-start;
+            padding-left: $grid-unit * 2;
+            border-top-left-radius: $grid-unit * 2;
+            flex-grow: 1;
+        }
+    }
+}

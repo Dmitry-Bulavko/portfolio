@@ -2,6 +2,10 @@
 .navigation {
     &__list {
         list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: $grid-unit * 2;
     }
     &__link {
         text-decoration: none;
@@ -13,11 +17,11 @@
         line-height: 24px; /* 150% */
         letter-spacing: 0.8px;
         transition: color .3s;
-        &:hover {
+        &:hover, &--active-route {
             color: $primary-color;
         }
-        &:not(:hover):visited {
-            color: $primary-color;
+        &:not(:hover):not(&--active-route):visited {
+            color: $text-color;
         }
     }
 }

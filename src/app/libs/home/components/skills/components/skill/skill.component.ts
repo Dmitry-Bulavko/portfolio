@@ -1,17 +1,21 @@
 import { Component, Input } from "@angular/core";
-import { NgForOf } from "@angular/common";
+import { NgForOf, NgIf } from "@angular/common";
+import { IconComponent } from "../../../../../ui/icon/icon.component";
+import { Icons } from "../../../../../ui/icon/icons.enum";
 
 @Component({
     selector: "app-skill",
     standalone: true,
     imports: [
         NgForOf,
+        IconComponent,
+        NgIf,
     ],
     templateUrl: "./skill.component.html",
     styleUrl: "./skill.component.scss",
 })
 export class SkillComponent {
-    @Input({required: true}) public skill!: { name: string, level: number };
+    @Input({required: true}) public skill!: { name: string, level: number, icon?: Icons };
     public levels: {
         name: string,
         index: number,
@@ -38,4 +42,5 @@ export class SkillComponent {
             description: ''
         },
     ]
+    protected readonly Icons = Icons;
 }

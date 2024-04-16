@@ -1,0 +1,38 @@
+@import "variables";
+
+.dashboard-navigation {
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: $grid-unit;
+    }
+    &__item {}
+    &__link {
+        --fliter-invert: 0;
+        display: flex;
+        align-items: center;
+        min-height: $grid-unit * 5;
+        padding-left: $grid-unit * 2;
+
+        border-top-right-radius: $grid-unit;
+        border-bottom-right-radius: $grid-unit;
+        color: $text-color;
+        text-decoration: none;
+        &--active-route {
+            background-color: rgba($primary-color-rgb, .8);
+            --fliter-invert: 1;
+        }
+        &-text {
+            filter: invert(var(--fliter-invert));
+        }
+        &:visited {
+            color: $text-color;
+        }
+        &:hover:not(&--active-route) {
+            background-color: rgba($primary-color-rgb, .2);
+        }
+    }
+}

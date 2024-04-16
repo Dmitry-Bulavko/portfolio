@@ -3,6 +3,7 @@ import { HexComponent } from "./components/hex/hex.component";
 import { CoreSkillsComponent } from "./components/core-skills/core-skills.component";
 import { NgForOf } from "@angular/common";
 import { SkillComponent } from "./components/skill/skill.component";
+import { Icons } from "../../../ui/icon/icons.enum";
 
 @Component({
     selector: "app-skills",
@@ -22,14 +23,15 @@ export class SkillsComponent {
         skills: {
             name: string,
             level: number,
+            icon?: Icons,
         }[]
     }[] = [
         {
             topic: "Front-End",
             skills: [
-                {name: "Angular 2+", level: 2},
-                {name: "JavaScript", level: 2},
-                {name: "TypeScript", level: 2},
+                {name: "Angular 2+", level: 2, icon: Icons.ANGULAR},
+                {name: "JavaScript", level: 2, icon: Icons.JAVASCRIPT},
+                {name: "TypeScript", level: 2, icon: Icons.TYPESCRIPT},
                 {name: "NgRX (Redux)", level: 2},
                 {name: "HTML", level: 2},
                 {name: "CSS", level: 2},

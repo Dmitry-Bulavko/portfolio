@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, NgZone, OnInit } from "@angular/core";
-import { filter, fromEvent, merge, tap, throttleTime } from "rxjs";
+import { filter, fromEvent, throttleTime } from "rxjs";
 import { NavigationEnd, Router } from "@angular/router";
 
 @Component({
@@ -32,7 +32,7 @@ export class TorchComponent implements OnInit {
             });
             this.router.events
                 .pipe(filter((event: NavigationEnd | any) => event instanceof NavigationEnd))
-                .subscribe((event: NavigationEnd) => {
+                .subscribe(() => {
                     this.eRef.nativeElement.style.display = "none";
                 });
         });

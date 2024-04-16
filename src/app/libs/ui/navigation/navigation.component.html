@@ -1,7 +1,14 @@
 <nav class="navigation">
     <ul class="navigation__list">
         <li class="navigation__item">
-            <a class="navigation__link" routerLink="saper">Projects</a>
+            <a class="navigation__link"
+               [routerLinkActive]="'navigation__link--active-route'"
+               routerLink="saper">Saper</a>
+        </li>
+        <li class="navigation__item">
+            <a class="navigation__link"
+               [routerLinkActive]="'navigation__link--active-route'"
+               routerLink="dashboard">Dashboard</a>
         </li>
     </ul>
 </nav>
